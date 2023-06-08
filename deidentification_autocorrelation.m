@@ -122,23 +122,7 @@ deidentifiedSegmentFrequencies = zeros(numSegments, segmentLength);
 
 % Součet reálné složky LPC spektra a imaginární složky FFT spektra 
 for i=1:numSegments
-    deidentifiedSegmentFrequencies(i,:) = deidentifiedSegmentLpcSpectrum(i,:) .* cos(angle(segmentFrequencies(i,:))) + j .* deidentifiedSegmentLpcSpectrum(i,:) .* sin(angle(segmentFrequencies(i,:)));
-end
-
-% Inicializace proměnné pro upravené segmenty
-deidentifiedSegment = zeros(numSegments, segmentLength);
-
-% Deidentifikované segmenty
-for i=1:numSegments
-    deidentifiedSegment(i,:) = ifft(deidentifiedSegmentFrequencies(i,:));
-end
-
-% Prealokace
-deidentifiedSegmentFrequencies = zeros(numSegments, segmentLength);
-
-% Součet reálné složky LPC spektra a imaginární složky FFT spektra 
-for i=1:numSegments
-deidentifiedSegmentFrequencies(i,:) = deidentifiedSegmentLpcSpectrum(i,:).*cos(angle(segmentFrequencies(i,:)))+j.*deidentifiedSegmentLpcSpectrum(i,:).*sin(angle(segmentFrequencies(i,:)));
+    deidentifiedSegmentFrequencies(i,:) = deidentifiedSegmentLpcSpectrum(i,:).*cos(angle(segmentFrequencies(i,:)))+j.*deidentifiedSegmentLpcSpectrum(i,:).*sin(angle(segmentFrequencies(i,:)));
 end
 
 % Inicializace proměnné pro upravené segmenty
